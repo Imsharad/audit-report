@@ -2,6 +2,7 @@ from pathlib import Path
 from loguru import logger
 from typing import List, Dict, Any
 import json
+import csv # Added import
 from datetime import datetime
 import os
 import asyncio
@@ -73,28 +74,43 @@ class EmailAuditPipeline:
             # Save report
             report_path = self.reports_dir / f"{eml_path.stem}_report.json"
             report_path.write_text(json.dumps(report, indent=2))
+
+            # Generate and save CSV report
+            csv_data = self.reporter.generate_csv_report(eml_path.name, audit_results, report["timestamp"])
+            csv_report_path = self.reports_dir / f"{eml_path.stem}_report.csv"
+            with open(csv_report_path, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerows(csv_data)
             
             # Move files to case folder
             new_paths = self.state_manager.move_to_case_folder(
                 case_number,
                 eml_path,
                 html_path,
-                report_path
+                report_path,
+                csv_report_path # Pass CSV report path
             )
             
             # Clean up temporary files
             html_path.unlink()
             report_path.unlink()
+            if csv_report_path.exists(): # Ensure it exists before trying to unlink
+                csv_report_path.unlink()
             
+            # Prepare paths for return, ensuring csv_report is handled correctly
+            returned_paths = {
+                "eml": str(new_paths["eml"]),
+                "html": str(new_paths["html"]),
+                "json_report": str(new_paths["report"]) # Renamed for clarity
+            }
+            if "csv_report" in new_paths and new_paths["csv_report"]:
+                returned_paths["csv_report"] = str(new_paths["csv_report"])
+
             return {
                 "status": "success",
                 "eml_file": eml_path.name,
                 "case_number": case_number,
-                "paths": {
-                    "eml": str(new_paths["eml"]),
-                    "html": str(new_paths["html"]),
-                    "report": str(new_paths["report"])
-                }
+                "paths": returned_paths
             }
             
         except Exception as e:

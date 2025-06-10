@@ -1,5 +1,7 @@
 from typing import Dict, List, Any
 from datetime import datetime
+import re
+from .csv_headers import AUDIT_CSV_HEADERS
 
 class ReportGenerator:
     def generate_report(

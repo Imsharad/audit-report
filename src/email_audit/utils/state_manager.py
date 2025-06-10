@@ -54,7 +54,8 @@ class StateManager:
         case_number: str,
         eml_path: Path,
         html_path: Path,
-        report_path: Path
+        report_path: Path,
+        csv_report_path: Optional[Path] = None
     ) -> Dict[str, Path]:
         """Move processed files to their case folder."""
         case_dir = self.processed_dir / case_number
@@ -70,6 +71,10 @@ class StateManager:
         shutil.copy2(eml_path, new_paths["eml"])
         shutil.copy2(html_path, new_paths["html"])
         shutil.copy2(report_path, new_paths["report"])
+
+        if csv_report_path and csv_report_path.exists():
+            new_paths["csv_report"] = case_dir / "reports" / csv_report_path.name
+            shutil.copy2(csv_report_path, new_paths["csv_report"])
         
         # Update state
         self.state["processed_files"][str(eml_path.absolute())] = case_number
@@ -89,7 +94,8 @@ class StateManager:
             "files": {
                 "eml": list((case_dir / "eml").glob("*.eml")),
                 "html": list((case_dir / "html").glob("*.html")),
-                "reports": list((case_dir / "reports").glob("*.json"))
+                "json_reports": list((case_dir / "reports").glob("*.json")),
+                "csv_reports": list((case_dir / "reports").glob("*.csv"))
             }
         }
     
