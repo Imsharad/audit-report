@@ -76,7 +76,7 @@ class EmailAuditPipeline:
             report_path.write_text(json.dumps(report, indent=2))
 
             # Generate and save CSV report
-            csv_data = self.reporter.generate_csv_report(eml_path.name, audit_results, report["timestamp"])
+            csv_data = self.reporter.generate_csv_report(case_number, eml_path.name, audit_results, report["timestamp"]) # Added case_number
             csv_report_path = self.reports_dir / f"{eml_path.stem}_report.csv"
             with open(csv_report_path, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
