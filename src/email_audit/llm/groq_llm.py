@@ -1,11 +1,11 @@
 import json
 import os
-from typing import Optional, Type, Union, Dict, Any
+from typing import Optional, Type, Union, Dict, Any, List
 from pydantic import BaseModel, ValidationError
 from openai import AsyncOpenAI
 from groq import Groq
 
-from .base_llm import BaseLLM
+from .base_llm import BaseLLM, MultimodalPrompt
 from loguru import logger
 
 class GroqLLM(BaseLLM):
@@ -146,3 +146,23 @@ class GroqLLM(BaseLLM):
         except Exception as e:
             logger.error(f"Error invoking Groq model {self.model_name}: {e}")
             return None 
+
+    @property
+    def supports_multimodal(self) -> bool:
+        """Groq doesn't support multimodal inputs currently."""
+        return False
+
+    @property
+    def supported_image_types(self) -> List[str]:
+        """Groq doesn't support image types currently."""
+        return []
+
+    @property
+    def supported_document_types(self) -> List[str]:
+        """Groq doesn't support document types currently."""
+        return []
+
+    async def ainvoke_multimodal(self, prompt: MultimodalPrompt, schema: Optional[Type[BaseModel]] = None) -> Optional[Union[BaseModel, str]]:
+        """Multimodal not supported by Groq - fallback to text only."""
+        logger.warning("Multimodal not supported by Groq, falling back to text-only processing")
+        return await self.ainvoke(prompt.text, schema) 

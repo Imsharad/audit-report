@@ -86,7 +86,8 @@ class EmailAuditor:
             logger.debug(f"Initialized primary_llm with {primary_llm_provider}:{primary_llm_model_name}")
 
             # Reasoning LLM
-            reasoning_llm_provider = os.getenv('REASONING_LLM_PROVIDER', 'anthropic').lower()
+            reasoning_llm_provider = 'anthropic' # Force Anthropic for reasoning
+            # reasoning_llm_provider = os.getenv('REASONING_LLM_PROVIDER', 'anthropic').lower()
             if reasoning_llm_provider == 'openai':
                 default_reasoning_model = DEFAULT_OPENAI_REASONING_MODEL
             elif reasoning_llm_provider == 'anthropic':
@@ -216,11 +217,20 @@ class EmailAuditor:
             structured_data = await self.primary_llm.ainvoke(structuring_prompt, schema=EmailConversation)
             if not isinstance(structured_data, EmailConversation):
                 logger.error(f"Failed to get structured EmailConversation. Received type: {type(structured_data)}. Content: {structured_data}")
-                # Or, depending on how LLM client handles parsing errors (e.g., returns raw string):
-                # if isinstance(structured_data, str):
-                #     logger.error(f"Failed to parse EmailConversation. Raw response: {structured_data}")
-                raise ValueError("Could not parse email conversation structure from primary_llm.")
+                # Try to parse from text if the model failed to use the tool
+                if isinstance(structured_data, str):
+                    try:
+                        # TODO: This is a fallback, but we should investigate why the model isn't using the tool
+                        logger.warning("Falling back to parsing EmailConversation from text.")
+                        # structured_data = EmailConversation.model_validate_json(structured_data)
+                        structured_data = await self.primary_llm.ainvoke(structuring_prompt, schema=EmailConversation)
+                    except ValidationError as e:
+                        logger.error(f"Failed to parse EmailConversation. Raw response: {structured_data}")
+                        return None, "Failed to parse conversation structure from email."
+        
+            logger.debug(f"Structured conversation extracted: {structured_data.model_dump_json(indent=2)}")
 
+            # Step 2: Perform the detailed audit using the structured data
             messages = {
                 "messages": [
                     {
@@ -229,17 +239,12 @@ class EmailAuditor:
                         "recipients": [msg.recipient] + msg.cc,
                         "subject": msg.subject,
                         "content": msg.body,
-                        "attachments": [],  # Assuming no attachment parsing for now
-                        "images": []        # Assuming no image parsing for now
                     }
                     for msg in structured_data.email_conversations
                 ]
             }
-            logger.info(f"Successfully structured {len(messages['messages'])} messages.")
 
-            # Step 3: Perform the comprehensive audit (this part is already efficient)
-            logger.info("Building comprehensive analysis prompt...")
-            analysis_task_prompt = f"""
+            audit_prompt = f"""
 Analyze the following email conversation based on a comprehensive set of audit criteria.
 
 Conversation History (chronological order):
@@ -250,13 +255,13 @@ Please evaluate the conversation against each of the following audit steps. Call
 Audit Criteria:
 """
             for step in self.audit_steps:
-                analysis_task_prompt += f"""
+                audit_prompt += f"""
 - Step ID: {step['id']}
   - Title: {step['title']}
   - Purpose: {step['purpose']}
   - Prompt: {step['prompt']}
 """
-            analysis_task_prompt += """
+            audit_prompt += """
 For each step, provide:
 1. A boolean 'passed' field (true if score is >= 0.7).
 2. A float 'score' from 0.0 to 1.0.
@@ -266,11 +271,12 @@ For each step, provide:
 
 You must call the `structured_output` function with the results of your analysis.
 """
+            
             # structured_llm = self.reasoning_llm.with_structured_output(AuditReport) # Old way
 
             logger.info("Performing comprehensive audit with a single, structured LLM call...")
             # comprehensive_report = await structured_llm.ainvoke(analysis_task_prompt) # Old way
-            comprehensive_report = await self.reasoning_llm.ainvoke(analysis_task_prompt, schema=AuditReport)
+            comprehensive_report = await self.reasoning_llm.ainvoke(audit_prompt, schema=AuditReport)
             if not isinstance(comprehensive_report, AuditReport):
                 logger.error(f"Failed to get structured AuditReport. Received type: {type(comprehensive_report)}. Content: {comprehensive_report}")
                 # Or, if LLM client returns raw string on parsing error:

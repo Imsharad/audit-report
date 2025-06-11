@@ -1408,3 +1408,328 @@
 2025-06-10 21:16:54.870 | INFO     | __main__:main:146 - - Skipped: 0 files
 2025-06-10 21:16:54.870 | INFO     | __main__:main:147 - - Failed: 0 files
 2025-06-10 21:16:54.870 | INFO     | __main__:main:151 - Total cases: 1
+2025-06-11 13:49:03.376 | INFO     | __main__:run:129 - Processing Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml
+2025-06-11 13:49:03.380 | INFO     | __main__:process_eml_file:57 - Created new case folder: CASE_20250611_134903
+2025-06-11 13:49:03.409 | INFO     | src.email_audit.auditor.email_auditor:audit_email:189 - Directly parsing HTML file: eml-html/Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.html
+2025-06-11 13:49:03.439 | INFO     | src.email_audit.auditor.email_auditor:audit_email:201 - Structuring conversation from raw text using a LLM...
+2025-06-11 13:49:05.576 | INFO     | src.email_audit.auditor.email_auditor:audit_email:238 - Successfully structured 4 messages.
+2025-06-11 13:49:05.577 | INFO     | src.email_audit.auditor.email_auditor:audit_email:241 - Building comprehensive analysis prompt...
+2025-06-11 13:49:05.577 | INFO     | src.email_audit.auditor.email_auditor:audit_email:271 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 13:49:09.523 | INFO     | src.email_audit.auditor.email_auditor:audit_email:282 - Refining the audit with a judge LLM...
+2025-06-11 13:50:13.489 | INFO     | src.email_audit.auditor.email_auditor:audit_email:312 - Successfully refined the audit report.
+2025-06-11 13:50:13.492 | INFO     | __main__:run:129 - Processing Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml
+2025-06-11 13:50:13.492 | INFO     | __main__:process_eml_file:57 - Created new case folder: CASE_20250611_135013
+2025-06-11 13:50:13.499 | INFO     | src.email_audit.auditor.email_auditor:audit_email:189 - Directly parsing HTML file: eml-html/Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.html
+2025-06-11 13:50:13.517 | INFO     | src.email_audit.auditor.email_auditor:audit_email:201 - Structuring conversation from raw text using a LLM...
+2025-06-11 13:50:16.872 | INFO     | src.email_audit.auditor.email_auditor:audit_email:238 - Successfully structured 2 messages.
+2025-06-11 13:50:16.872 | INFO     | src.email_audit.auditor.email_auditor:audit_email:241 - Building comprehensive analysis prompt...
+2025-06-11 13:50:16.872 | INFO     | src.email_audit.auditor.email_auditor:audit_email:271 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 13:50:20.107 | INFO     | src.email_audit.auditor.email_auditor:audit_email:282 - Refining the audit with a judge LLM...
+2025-06-11 13:51:17.284 | INFO     | src.email_audit.auditor.email_auditor:audit_email:312 - Successfully refined the audit report.
+2025-06-11 13:51:17.292 | INFO     | __main__:main:144 - Pipeline completed:
+2025-06-11 13:51:17.292 | INFO     | __main__:main:145 - - Processed: 2 files
+2025-06-11 13:51:17.292 | INFO     | __main__:main:146 - - Skipped: 0 files
+2025-06-11 13:51:17.293 | INFO     | __main__:main:147 - - Failed: 0 files
+2025-06-11 13:51:17.295 | INFO     | __main__:main:151 - Total cases: 3
+2025-06-11 14:49:10.091 | INFO     | __main__:run:185 - Processing Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml
+2025-06-11 14:49:10.091 | INFO     | __main__:process_eml_file:57 - File Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml already processed in case CASE_20250611_134903
+2025-06-11 14:49:10.091 | INFO     | __main__:run:185 - Processing Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml
+2025-06-11 14:49:10.092 | INFO     | __main__:process_eml_file:57 - File Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml already processed in case CASE_20250611_135013
+2025-06-11 14:49:10.092 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:49:10.092 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 14:49:10.092 | INFO     | __main__:main:202 - - Skipped: 2 files
+2025-06-11 14:49:10.092 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 14:49:10.093 | INFO     | __main__:main:219 - Total cases: 3
+2025-06-11 14:49:51.786 | INFO     | __main__:run:185 - Processing Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml
+2025-06-11 14:49:51.786 | INFO     | __main__:process_eml_file:57 - File Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml already processed in case CASE_20250611_134903
+2025-06-11 14:49:51.786 | INFO     | __main__:run:185 - Processing Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml
+2025-06-11 14:49:51.786 | INFO     | __main__:process_eml_file:57 - File Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml already processed in case CASE_20250611_135013
+2025-06-11 14:49:51.787 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:49:51.787 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 14:49:51.787 | INFO     | __main__:main:202 - - Skipped: 2 files
+2025-06-11 14:49:51.787 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 14:49:51.787 | INFO     | __main__:main:219 - Total cases: 2
+2025-06-11 14:50:12.421 | INFO     | __main__:run:185 - Processing Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml
+2025-06-11 14:50:12.422 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_145012
+2025-06-11 14:50:12.431 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml: 3 parts, 0 attachments
+2025-06-11 14:50:12.431 | INFO     | src.email_audit.auditor.email_auditor:audit_email:189 - Directly parsing HTML file: eml-html/Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.html
+2025-06-11 14:50:12.453 | INFO     | src.email_audit.auditor.email_auditor:audit_email:201 - Structuring conversation from raw text using a LLM...
+2025-06-11 14:50:14.367 | INFO     | src.email_audit.auditor.email_auditor:audit_email:238 - Successfully structured 4 messages.
+2025-06-11 14:50:14.367 | INFO     | src.email_audit.auditor.email_auditor:audit_email:241 - Building comprehensive analysis prompt...
+2025-06-11 14:50:14.367 | INFO     | src.email_audit.auditor.email_auditor:audit_email:271 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 14:50:20.883 | ERROR    | src.email_audit.llm.groq_llm:ainvoke:147 - Error invoking Groq model meta-llama/llama-4-scout-17b-16e-instruct: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=structured_output>{\n"results": [\n{\n"step_id": "logical_itinerary",\n"title": "Logical Itinerary (Time window, Routing, Connections)",\n"passed": true,\n"score": 0.9,\n"analysis": "The proposed itinerary includes flights SV593N on June 13th from DXB to RUH and SV560K on June 14th from RUH to DXB. The flight times are reasonable (05:00-06:00 and 15:55-19:00), with no excessively early or late flights. The routing is efficient with no unnecessary layovers. The connection time in RUH is adequate. The itinerary aligns with the client\'s request for economy flights and a one-night stay at the Riyadh Marriott Hotel.",\n"reasoning": "The itinerary seems logical and meets the client\'s needs. The flights are at reasonable times, and the routing is efficient. The connection time in Riyadh is adequate for a layover.",\n"improvements": null\n},\n{\n"step_id": "limo_offering_address_phone",\n"title": "Offered Limo where applicable and Ensuring complete address & phone number",\n"passed": true,\n"score": 1.0,\n"analysis": "Limo service does not appear to be applicable or requested in this conversation. The client did not mention any need for limo service, and the agent did not offer it. Therefore, the score is 1.0 as no action was required.",\n"reasoning": "No limo service was requested or offered, making it not applicable. Hence, the score is 1.0.",\n"improvements": null\n},\n{\n"step_id": "transit_visa_advisory",\n"title": "Transit Visa advisory",\n"passed": true,\n"score": 1.0,\n"analysis": "There are no layovers or transit points mentioned in the itinerary provided. The travel is from DXB to RUH and back to DXB without any stops. Therefore, no transit visa advisory was required or provided.",\n"reasoning": "No layovers or transit points were involved, making transit visa advisory not applicable. Hence, the score is 1.0.",\n"improvements": null\n},\n{\n"step_id": "options_class_as_per_policy",\n"title": "Options & class of service as per client policy",\n"passed": true,\n"score": 1.0,\n"analysis": "The client requested economy flights, and the agent provided an economy class option. No specific client travel policy was mentioned, but the provided option aligns with the client\'s request. The hotel option also matches the client\'s request.",\n"reasoning": "The agent provided economy class flights and a hotel option that matches the client\'s request. No deviations from the client\'s request were noted.",\n"improvements": null\n},\n{\n"step_id": "noshow_cancellation_advice",\n"title": "No Show / Cancellations / Changes to be advised correctly",\n"passed": true,\n"score": 0.8,\n"analysis": "The agent provided information on date change fees (SAR250 + fare difference), cancellation fees (AED350), and no-show fees (non-refundable). This advice was clear and proactive.",\n"reasoning": "The agent provided clear advice on the fees and implications for changes, cancellations, and no-shows. This was done proactively, which is good practice.",\n"improvements": "Consider providing a summary of the key policies and fees in a more concise manner for easier reference."\n},\n{\n"step_id": "correct_service_fee_selection",\n"title": "Correct Service fee selection (Air, Car, Hotel, Other)",\n"passed": true,\n"score": 1.0,\n"analysis": "The conversation does not explicitly mention any service fees applied or their types. However, the provided fare of AED2,065 seems appropriate for the transaction. No issues were noted regarding service fee application or communication.",\n"reasoning": "No explicit mention of service fees or their application was found. The fare seems appropriate, and no issues were noted.",\n"improvements": null\n},\n{\n"step_id": "overall_communication_email",\n"title": "Overall communication in the email",\n"passed": true,\n"score": 0.9,\n"analysis": "The communication was clear and concise. The agent provided professional and helpful responses. Grammar and spelling appear correct. Responses were timely and guided the client effectively.",\n"reasoning": "The agent\'s communication was professional, clear, and helpful. The tone was appropriate, and responses were timely.",\n"improvements": "Consider adding a brief summary or confirmation of the client\'s needs and the services booked at the end of the conversation."\n},\n{\n"step_id": "cwt_itinerary_clipboard_sabre_format",\n"title": "Used CWT Itinerary / Clipboard / Sabre format as per client",\n"passed": true,\n"score": 1.0,\n"analysis": "The itinerary information was presented in a clear, structured, and professional manner. Although no specific format was requested, the text-based breakdown provided was easy to understand and included key information.",\n"reasoning": "The presentation was clear and professional. No specific format was requested, and the provided information was sufficient.",\n"improvements": null\n},\n{\n"step_id": "cross_upsell_opportunity",\n"title": "Utilized cross sell & up sell opportunity (Hotel, Car, Insurance)",\n"passed": false,\n"score": 0.2,\n"analysis": "The agent did not proactively offer or inquire about hotel, car rental, or travel insurance needs beyond the initial flight request. The client only requested flights and hotel, which were provided. No additional services were offered or discussed.",\n"reasoning": "The agent missed an opportunity to cross-sell or up-sell additional services like hotel or car rental insurance.",\n"improvements": "The agent could have proactively offered or inquired about additional services such as travel insurance, car rentals, or hotel upgrades."\n},\n{\n"step_id": "quotation_based_on_request",\n"title": "Quotation based on request (Date, Time, City Pair)",\n"passed": true,\n"score": 1.0,\n"analysis": "The quotation directly addressed the client\'s specified parameters: dates (June 13th and 14th), times (05:00-06:00 and 15:55-19:00), and city pair (DXB-RUH-DXB). No discrepancies were noted.",\n"reasoning": "The quotation aligned perfectly with the client\'s request in terms of dates, times, and city pair.",\n"improvements": null\n}\n]\n}</function=structured_output>'}}
+2025-06-11 14:50:20.885 | ERROR    | src.email_audit.auditor.email_auditor:audit_email:275 - Failed to get structured AuditReport. Received type: <class 'NoneType'>. Content: None
+2025-06-11 14:50:20.885 | ERROR    | src.email_audit.auditor.email_auditor:audit_email:347 - Error during efficient HTML-based audit: Could not parse audit report structure from reasoning_llm.
+2025-06-11 14:50:20.885 | ERROR    | __main__:process_eml_file:173 - Error processing Re_ RE_ #A-CS-8619820_ Case 5635001_ Re_ Dubai-Riyadh-Dubai.eml: Could not parse audit report structure from reasoning_llm.
+2025-06-11 14:50:20.886 | INFO     | __main__:run:185 - Processing Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml
+2025-06-11 14:50:20.887 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_145020
+2025-06-11 14:50:20.901 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml: 3 parts, 0 attachments
+2025-06-11 14:50:20.904 | INFO     | src.email_audit.auditor.email_auditor:audit_email:189 - Directly parsing HTML file: eml-html/Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.html
+2025-06-11 14:50:20.922 | INFO     | src.email_audit.auditor.email_auditor:audit_email:201 - Structuring conversation from raw text using a LLM...
+2025-06-11 14:50:24.255 | INFO     | src.email_audit.auditor.email_auditor:audit_email:238 - Successfully structured 2 messages.
+2025-06-11 14:50:24.255 | INFO     | src.email_audit.auditor.email_auditor:audit_email:241 - Building comprehensive analysis prompt...
+2025-06-11 14:50:24.256 | INFO     | src.email_audit.auditor.email_auditor:audit_email:271 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 14:50:27.842 | INFO     | src.email_audit.auditor.email_auditor:audit_email:282 - Refining the audit with a judge LLM...
+2025-06-11 14:51:24.918 | INFO     | src.email_audit.auditor.email_auditor:audit_email:312 - Successfully refined the audit report.
+2025-06-11 14:51:24.928 | INFO     | __main__:process_eml_file:151 - Processed Re_ RE_ #A-CS-8613722_ Case 5628902_ Re_ Please book the following flights.eml: 3 MIME parts, 0 attachments
+2025-06-11 14:51:24.928 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:51:24.928 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 14:51:24.928 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 14:51:24.928 | INFO     | __main__:main:203 - - Failed: 1 files
+2025-06-11 14:51:24.928 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 14:51:24.929 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 14:51:24.929 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 14:51:24.929 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 14:51:24.931 | INFO     | __main__:main:219 - Total cases: 4
+2025-06-11 14:55:17.547 | INFO     | __main__:run:185 - Processing Fw_ Re_Case No_4745232802125-Request for flight options.eml
+2025-06-11 14:55:17.550 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_145517
+2025-06-11 14:55:17.572 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Fw_ Re_Case No_4745232802125-Request for flight options.eml: 3 parts, 0 attachments
+2025-06-11 14:55:17.572 | INFO     | src.email_audit.auditor.email_auditor:audit_email:189 - Directly parsing HTML file: eml-html/Fw_ Re_Case No_4745232802125-Request for flight options.html
+2025-06-11 14:55:17.603 | INFO     | src.email_audit.auditor.email_auditor:audit_email:201 - Structuring conversation from raw text using a LLM...
+2025-06-11 14:55:24.206 | INFO     | src.email_audit.auditor.email_auditor:audit_email:238 - Successfully structured 13 messages.
+2025-06-11 14:55:24.206 | INFO     | src.email_audit.auditor.email_auditor:audit_email:241 - Building comprehensive analysis prompt...
+2025-06-11 14:55:24.206 | INFO     | src.email_audit.auditor.email_auditor:audit_email:271 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 14:55:26.815 | INFO     | src.email_audit.auditor.email_auditor:audit_email:282 - Refining the audit with a judge LLM...
+2025-06-11 14:56:19.098 | ERROR    | src.email_audit.llm.anthropic_llm:ainvoke:102 - JSONDecodeError parsing Anthropic response: Expecting value: line 1 column 1 (char 0), content: Here is the refined and corrected audit report in JSON format:
+
+{
+  "results": [
+    {
+      "step_id": "logical_itinerary",
+      "title": "Logical Itinerary (Time window, Routing, Connections)",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The itinerary proposed and booked meets the client's needs perfectly. The agent provided multiple flight options on the requested dates between Dubai and Bahrain. The selected flights have convenient timings in the morning and evening with no unnecessary layovers or connections.",
+      "reasoning": "The agent fully addressed the client's request for flights between Dubai and Bahrain on the specified dates. They offered a range of suitable flight options and booked the flights preferred by the client.",
+      "improvements": null
+    },
+    {
+      "step_id": "limo_offering_address_phone",
+      "title": "Offered Limo where applicable and Ensuring complete address & phone number",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "Limo service was not applicable in this case as the client only requested flights between Dubai and Bahrain. There was no mention of ground transportation being required.",
+      "reasoning": "The agent correctly handled the request by focusing solely on the flight bookings, as no limo or other ground transport was requested by the client.",
+      "improvements": null
+    },
+    {
+      "step_id": "transit_visa_advisory",
+      "title": "Transit Visa advisory",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The agent included an appropriate transit visa advisory in their email responses, reminding the client to check visa requirements based on their nationality and the itinerary.",
+      "reasoning": "Although transit visas were likely not needed for travel between Dubai and Bahrain, the agent proactively included a general visa advisory as a helpful reminder to the client.",
+      "improvements": null
+    },
+    {
+      "step_id": "options_class_as_per_policy",
+      "title": "Options & class of service as per client policy",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The agent provided flight options in economy class, which appears to be in line with the client's unstated travel policy. No other class of service was requested.",
+      "reasoning": "By offering and booking economy class flights, the agent met the presumed requirements of the client. The client did not specify a preferred airline or class of service.",
+      "improvements": null
+    },
+    {
+      "step_id": "noshow_cancellation_advice",
+      "title": "No Show / Cancellations / Changes to be advised correctly",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The agent clearly communicated the cancellation and change fees that would apply to the booking. They also advised that no-shows would be non-refundable.",
+      "reasoning": "By proactively informing the client about the cancellation, change and no-show policies, the agent ensured the client could make an informed decision. This information was provided multiple times in the email chain.",
+      "improvements": null
+    },
+    {
+      "step_id": "correct_service_fee_selection",
+      "title": "Correct Service fee selection (Air, Car, Hotel, Other)",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The agent correctly applied the air booking service fee of AED 170 and communicated this clearly to the client as part of the total cost.",
+      "reasoning": "The service fee was itemized separately from the fare, taxes and surcharges. The client was made aware of the fee at the time of booking.",
+      "improvements": null
+    },
+    {
+      "step_id": "overall_communication_email",
+      "title": "Overall communication in the email",
+      "passed": true,
+      "score": 0.9,
+      "analysis": "The agent's communication throughout the email chain was professional, clear and responsive to the client's needs. They provided the requested information in a timely manner and followed up proactively.",
+      "reasoning": "The agent handled the booking process smoothly from start to finish, replying promptly to the client with the relevant details at each stage. The tone remained courteous and helpful.",
+      "improvements": "The agent could show a bit more enthusiasm and personalization in their responses to build rapport with the client."
+    },
+    {
+      "step_id": "cwt_itinerary_clipboard_sabre_format",
+      "title": "Used CWT Itinerary / Clipboard / Sabre format as per client",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The agent presented the itinerary and flight details in a standardized format that appears to meet the unstated requirements of the client. No specific formatting was requested.",
+      "reasoning": "The itinerary was clearly laid out with all the key details like flight numbers, dates, times, and fare conditions. This allowed the client to review the booking easily.",
+      "improvements": null
+    },
+    {
+      "step_id": "cross_upsell_opportunity",
+      "title": "Utilized cross sell & up sell opportunity (Hotel, Car, Insurance)",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The agent was not required to cross-sell or upsell in this case, as the client's request was very specific to flights only. Proactively offering unrelated products would likely have been perceived as pushy or irrelevant.",
+      "reasoning": "Given the client only asked for assistance with flights between Dubai and Bahrain, it was appropriate for the agent to focus solely on fulfilling that request. Attempting to sell hotels, cars or insurance would have been out of scope.",
+      "improvements": null
+    },
+    {
+      "step_id": "quotation_based_on_request",
+      "title": "Quotation based on request (Date, Time, City Pair)",
+      "passed": true,
+      "score": 1.0,
+      "analysis": "The agent provided quotations that precisely matched the client's requested dates, times and city pair. They offered multiple options on the specified dates between Dubai and Bahrain.",
+      "reasoning": "By focusing the flight search and pricing on the exact parameters provided by the client, the agent demonstrated their attention to detail and ability to follow instructions.",
+      "improvements": null
+    }
+  ]
+}
+2025-06-11 14:56:19.099 | WARNING  | src.email_audit.auditor.email_auditor:audit_email:308 - Failed to get structured RefinedAuditReport. Falling back to the original report. Received type: <class 'str'>
+2025-06-11 14:56:19.109 | INFO     | __main__:process_eml_file:151 - Processed Fw_ Re_Case No_4745232802125-Request for flight options.eml: 3 MIME parts, 0 attachments
+2025-06-11 14:56:19.109 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:56:19.109 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 14:56:19.109 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 14:56:19.109 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 14:56:19.110 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 14:56:19.110 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 14:56:19.110 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 14:56:19.110 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 14:56:19.111 | INFO     | __main__:main:219 - Total cases: 5
+2025-06-11 14:57:19.110 | INFO     | __main__:run:185 - Processing Fw_ Re_Case No_4745232802125-Request for flight options.eml
+2025-06-11 14:57:19.111 | INFO     | __main__:process_eml_file:57 - File Fw_ Re_Case No_4745232802125-Request for flight options.eml already processed in case CASE_20250611_145517
+2025-06-11 14:57:19.111 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:57:19.111 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 14:57:19.111 | INFO     | __main__:main:202 - - Skipped: 1 files
+2025-06-11 14:57:19.111 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 14:57:19.112 | INFO     | __main__:main:219 - Total cases: 5
+2025-06-11 14:57:31.542 | INFO     | __main__:run:185 - Processing Fw_ Re_Case No_4745232802125-Request for flight options.eml
+2025-06-11 14:57:31.543 | INFO     | __main__:process_eml_file:57 - File Fw_ Re_Case No_4745232802125-Request for flight options.eml already processed in case CASE_20250611_145517
+2025-06-11 14:57:31.543 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:57:31.543 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 14:57:31.543 | INFO     | __main__:main:202 - - Skipped: 1 files
+2025-06-11 14:57:31.543 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 14:57:31.544 | INFO     | __main__:main:219 - Total cases: 4
+2025-06-11 14:58:04.908 | INFO     | __main__:run:185 - Processing Fw_ Re_Case No_4745232802125-Request for flight options.eml
+2025-06-11 14:58:04.909 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_145804
+2025-06-11 14:58:04.920 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Fw_ Re_Case No_4745232802125-Request for flight options.eml: 3 parts, 0 attachments
+2025-06-11 14:58:04.921 | INFO     | src.email_audit.auditor.email_auditor:audit_email:189 - Directly parsing HTML file: eml-html/Fw_ Re_Case No_4745232802125-Request for flight options.html
+2025-06-11 14:58:04.949 | INFO     | src.email_audit.auditor.email_auditor:audit_email:201 - Structuring conversation from raw text using a LLM...
+2025-06-11 14:58:11.737 | INFO     | src.email_audit.auditor.email_auditor:audit_email:238 - Successfully structured 13 messages.
+2025-06-11 14:58:11.737 | INFO     | src.email_audit.auditor.email_auditor:audit_email:241 - Building comprehensive analysis prompt...
+2025-06-11 14:58:11.737 | INFO     | src.email_audit.auditor.email_auditor:audit_email:271 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 14:58:17.836 | ERROR    | src.email_audit.llm.groq_llm:ainvoke:147 - Error invoking Groq model meta-llama/llama-4-scout-17b-16e-instruct: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=structured_output>{\n"results": [\n{\n"step_id": "logical_itinerary",\n"title": "Logical Itinerary (Time window, Routing, Connections)",\n"passed": true,\n"score": 0.9,\n"analysis": "The proposed itinerary is logical and meets client needs. The flights are reasonable, with no excessively early or late departures/arrivals. There are no unnecessary layovers, and connection times are adequate.",\n"reasoning": "The client requested flights from Dubai to Bahrain and back on specific dates. The agent provided multiple options, and the client chose flights with reasonable timings. The itinerary aligns with the client\'s stated travel needs.",\n"improvements": null\n},\n{\n"step_id": "limo_offering_address_phone",\n"title": "Offered Limo where applicable and Ensuring complete address & phone number",\n"passed": true,\n"score": 1.0,\n"analysis": "Limo service was not applicable or offered, as there was no mention of it in the conversation. The client only requested flights, and the agent fulfilled this request.",\n"reasoning": "Since limo service was not requested or offered, and no specific client policy or request for limo service was mentioned, the score is 1.0 for not being applicable.",\n"improvements": null\n},\n{\n"step_id": "transit_visa_advisory",\n"title": "Transit Visa advisory",\n"passed": true,\n"score": 1.0,\n"analysis": "There were no layovers or transit points mentioned in the itinerary. Both flights were direct, so no transit visa advice was required.",\n"reasoning": "Given that there were no layovers or transit points, the agent did not need to provide transit visa advice. The score is 1.0 as no action was required.",\n"improvements": null\n},\n{\n"step_id": "options_class_as_per_policy",\n"title": "Options & class of service as per client policy",\n"passed": true,\n"score": 0.8,\n"analysis": "The client was provided with economy class options, and there was no mention of a specific client policy requiring a different class or specific airlines. The agent offered multiple flight options.",\n"reasoning": "The agent provided standard economy class options and did not deviate from common practices. However, the client\'s specific policy was not explicitly mentioned, so it is assumed that standard options were reasonable.",\n"improvements": "It would be beneficial to explicitly confirm the client\'s travel policy regarding class and airlines, if any."\n},\n{\n"step_id": "noshow_cancellation_advice",\n"title": "No Show / Cancellations / Changes to be advised correctly",\n"passed": true,\n"score": 0.9,\n"analysis": "The agent clearly informed the client about cancellation, change, and no-show policies, including fees and implications. This information was provided proactively.",\n"reasoning": "The client was advised about the rules and fees associated with changes, cancellations, or no-shows. This was done clearly and proactively, especially for a restrictive ticket.",\n"improvements": null\n},\n{\n"step_id": "correct_service_fee_selection",\n"title": "Correct Service fee selection (Air, Car, Hotel, Other)",\n"passed": true,\n"score": 0.9,\n"analysis": "A service fee was applied and communicated clearly. The type and amount seem appropriate for the transaction, and the agent ensured the client was aware of it.",\n"reasoning": "The service fee was clearly stated and applied correctly. There were no errors or lack of clarity in the communication.",\n"improvements": null\n},\n{\n"step_id": "overall_communication_email",\n"title": "Overall communication in the email",\n"passed": true,\n"score": 0.8,\n"analysis": "The communication was clear, concise, and professional. The agent was responsive and provided necessary details. There were no issues with grammar or spelling.",\n"reasoning": "The agent provided clear and timely information. The communication was professional, but could be improved by offering additional services like hotel or car rental.",\n"improvements": "Consider offering additional services like hotel or car rental to enhance client experience."\n},\n{\n"step_id": "cwt_itinerary_clipboard_sabre_format",\n"title": "Used CWT Itinerary / Clipboard / Sabre format as per client",\n"passed": true,\n"score": 0.8,\n"analysis": "The itinerary was presented in a clear, structured, and professional manner. Although no specific format was requested, the text-based breakdown was easy to understand.",\n"reasoning": "The agent provided a clear and structured itinerary. While no specific format was requested, the presentation was professional and sufficient for the client\'s needs.",\n"improvements": null\n},\n{\n"step_id": "cross_upsell_opportunity",\n"title": "Utilized cross sell & up sell opportunity (Hotel, Car, Insurance)",\n"passed": false,\n"score": 0.2,\n"analysis": "The agent did not attempt to cross-sell or up-sell relevant services like hotel, car rental, or travel insurance. The focus was solely on flight bookings.",\n"reasoning": "The agent missed an opportunity to offer additional services that could enhance the client\'s travel experience and increase revenue.",\n"improvements": "The agent should proactively offer or inquire about hotel, car rental, or travel insurance needs to utilize cross-sell and up-sell opportunities."\n},\n{\n"step_id": "quotation_based_on_request",\n"title": "Quotation based on request (Date, Time, City Pair)",\n"passed": true,\n"score": 0.9,\n"analysis": "The quotation directly addressed the client\'s specified parameters regarding date, time, and city pair. There were no discrepancies in the provided quote.",\n"reasoning": "The agent accurately reflected the client\'s request in the quotation. Any alternative options provided were clearly explained.",\n"improvements": null\n}\n]\n}</function=structured_output>'}}
+2025-06-11 14:58:17.837 | ERROR    | src.email_audit.auditor.email_auditor:audit_email:275 - Failed to get structured AuditReport. Received type: <class 'NoneType'>. Content: None
+2025-06-11 14:58:17.837 | ERROR    | src.email_audit.auditor.email_auditor:audit_email:347 - Error during efficient HTML-based audit: Could not parse audit report structure from reasoning_llm.
+2025-06-11 14:58:17.837 | ERROR    | __main__:process_eml_file:173 - Error processing Fw_ Re_Case No_4745232802125-Request for flight options.eml: Could not parse audit report structure from reasoning_llm.
+2025-06-11 14:58:17.837 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:58:17.838 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 14:58:17.838 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 14:58:17.838 | INFO     | __main__:main:203 - - Failed: 1 files
+2025-06-11 14:58:17.839 | INFO     | __main__:main:219 - Total cases: 5
+2025-06-11 14:58:35.483 | INFO     | __main__:run:185 - Processing Fw_ Re_Case No_4745232802125-Request for flight options.eml
+2025-06-11 14:58:35.484 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_145835
+2025-06-11 14:58:35.495 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Fw_ Re_Case No_4745232802125-Request for flight options.eml: 3 parts, 0 attachments
+2025-06-11 14:58:35.495 | INFO     | src.email_audit.auditor.email_auditor:audit_email:189 - Directly parsing HTML file: eml-html/Fw_ Re_Case No_4745232802125-Request for flight options.html
+2025-06-11 14:58:35.522 | INFO     | src.email_audit.auditor.email_auditor:audit_email:201 - Structuring conversation from raw text using a LLM...
+2025-06-11 14:58:41.945 | INFO     | src.email_audit.auditor.email_auditor:audit_email:238 - Successfully structured 13 messages.
+2025-06-11 14:58:41.945 | INFO     | src.email_audit.auditor.email_auditor:audit_email:241 - Building comprehensive analysis prompt...
+2025-06-11 14:58:41.945 | INFO     | src.email_audit.auditor.email_auditor:audit_email:271 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 14:58:47.776 | ERROR    | src.email_audit.llm.groq_llm:ainvoke:147 - Error invoking Groq model meta-llama/llama-4-scout-17b-16e-instruct: Error code: 400 - {'error': {'message': "Failed to call a function. Please adjust your prompt. See 'failed_generation' for more details.", 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '<function=structured_output>{\n"results": [\n{\n"step_id": "logical_itinerary",\n"title": "Logical Itinerary (Time window, Routing, Connections)",\n"passed": true,\n"score": 0.9,\n"analysis": "The proposed itinerary is logical and meets client needs. The flights are reasonable, with no unnecessary layovers or excessively long connection times. The routing is efficient, and the flights align with the client\'s specified travel dates and times.",\n"reasoning": "The client requested flights from Dubai to Bahrain and back on specific dates. The agent provided multiple flight options, and the client chose reasonable flights (Flydubai 23 on May 7 and Flydubai 26 on May 9). The connection times and flight times are acceptable.",\n"improvements": null\n},\n{\n"step_id": "limo_offering_address_phone",\n"title": "Offered Limo where applicable and Ensuring complete address & phone number",\n"passed": true,\n"score": 1.0,\n"analysis": "Limo service was not applicable or requested in this conversation. The client only booked flights, and there was no mention of limo service. Therefore, the score is 1.0 as no action was required.",\n"reasoning": "No limo service was requested or offered. The conversation only involved flight bookings.",\n"improvements": null\n},\n{\n"step_id": "transit_visa_advisory",\n"title": "Transit Visa advisory",\n"passed": true,\n"score": 1.0,\n"analysis": "There were no layovers or transit points mentioned in the conversation. The flights were direct or had no mentioned layovers, so no transit visa advisory was required.",\n"reasoning": "The flights were direct, and no layovers were mentioned. Therefore, no transit visa advisory was necessary.",\n"improvements": null\n},\n{\n"step_id": "options_class_as_per_policy",\n"title": "Options & class of service as per client policy",\n"passed": true,\n"score": 0.8,\n"analysis": "The client was provided with economy class options, and there was no mention of a specific client travel policy. The agent offered multiple flight options, which is reasonable.",\n"reasoning": "No specific client policy was mentioned. The agent provided standard economy class options, which is reasonable.",\n"improvements": "It would be beneficial to confirm if the client has a specific travel policy."\n},\n{\n"step_id": "noshow_cancellation_advice",\n"title": "No Show / Cancellations / Changes to be advised correctly",\n"passed": true,\n"score": 0.9,\n"analysis": "The agent provided clear information about cancellation, changes, and no-show policies. The client was informed about the fees and implications.",\n"reasoning": "The agent proactively provided information on cancellation fees (AED 200 per direction), change fees (AED 150 + fare difference), and no-show policies.",\n"improvements": null\n},\n{\n"step_id": "correct_service_fee_selection",\n"title": "Correct Service fee selection (Air, Car, Hotel, Other)",\n"passed": true,\n"score": 0.9,\n"analysis": "The service fee was clearly communicated and applied. The agent charged AED 170 as CWT fees, which seems appropriate.",\n"reasoning": "The service fee was transparently stated, and the amount seems standard for the transaction.",\n"improvements": null\n},\n{\n"step_id": "overall_communication_email",\n"title": "Overall communication in the email",\n"passed": true,\n"score": 0.8,\n"analysis": "The communication was clear, concise, and professional. The agent was responsive and provided necessary details.",\n"reasoning": "The agent provided clear information, responded promptly, and maintained a professional tone.",\n"improvements": "Consider adding more empathy and personalized communication."\n},\n{\n"step_id": "cwt_itinerary_clipboard_sabre_format",\n"title": "Used CWT Itinerary / Clipboard / Sabre format as per client",\n"passed": true,\n"score": 0.8,\n"analysis": "The itinerary was presented in a clear, structured manner. Although no specific format was requested, the information was easy to understand.",\n"reasoning": "The agent provided a simple text-based breakdown of the itinerary, which was clear and sufficient for the client\'s needs.",\n"improvements": "Consider using a more formalized itinerary format if the client prefers."\n},\n{\n"step_id": "cross_upsell_opportunity",\n"title": "Utilized cross sell & up sell opportunity (Hotel, Car, Insurance)",\n"passed": false,\n"score": 0.0,\n"analysis": "The agent did not attempt to cross-sell or up-sell any additional services like hotel, car rental, or travel insurance.",\n"reasoning": "The conversation only focused on flight bookings. There was no attempt to offer additional services.",\n"improvements": "The agent could have inquired about hotel or car rental needs."\n},\n{\n"step_id": "quotation_based_on_request",\n"title": "Quotation based on request (Date, Time, City Pair)",\n"passed": true,\n"score": 0.9,\n"analysis": "The quotation directly addressed the client\'s specified parameters. The agent provided flights that matched the client\'s requested dates and times.",\n"reasoning": "The agent accurately quoted flights based on the client\'s request, with minimal deviations.",\n"improvements": null\n}\n]\n}</function=structured_output>'}}
+2025-06-11 14:58:47.776 | ERROR    | src.email_audit.auditor.email_auditor:audit_email:275 - Failed to get structured AuditReport. Received type: <class 'NoneType'>. Content: None
+2025-06-11 14:58:47.776 | ERROR    | src.email_audit.auditor.email_auditor:audit_email:347 - Error during efficient HTML-based audit: Could not parse audit report structure from reasoning_llm.
+2025-06-11 14:58:47.776 | ERROR    | __main__:process_eml_file:173 - Error processing Fw_ Re_Case No_4745232802125-Request for flight options.eml: Could not parse audit report structure from reasoning_llm.
+2025-06-11 14:58:47.777 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 14:58:47.777 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 14:58:47.777 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 14:58:47.777 | INFO     | __main__:main:203 - - Failed: 1 files
+2025-06-11 14:58:47.778 | INFO     | __main__:main:219 - Total cases: 5
+2025-06-11 14:59:38.386 | INFO     | __main__:run:185 - Processing Fw_ Re_Case No_4745232802125-Request for flight options.eml
+2025-06-11 14:59:38.387 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_145938
+2025-06-11 14:59:38.397 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Fw_ Re_Case No_4745232802125-Request for flight options.eml: 3 parts, 0 attachments
+2025-06-11 14:59:38.398 | INFO     | src.email_audit.auditor.email_auditor:audit_email:190 - Directly parsing HTML file: eml-html/Fw_ Re_Case No_4745232802125-Request for flight options.html
+2025-06-11 14:59:38.425 | INFO     | src.email_audit.auditor.email_auditor:audit_email:202 - Structuring conversation from raw text using a LLM...
+2025-06-11 14:59:44.840 | INFO     | src.email_audit.auditor.email_auditor:audit_email:239 - Successfully structured 13 messages.
+2025-06-11 14:59:44.840 | INFO     | src.email_audit.auditor.email_auditor:audit_email:242 - Building comprehensive analysis prompt...
+2025-06-11 14:59:44.841 | INFO     | src.email_audit.auditor.email_auditor:audit_email:272 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 15:00:50.185 | INFO     | src.email_audit.auditor.email_auditor:audit_email:283 - Refining the audit with a judge LLM...
+2025-06-11 15:01:58.373 | INFO     | src.email_audit.auditor.email_auditor:audit_email:313 - Successfully refined the audit report.
+2025-06-11 15:01:58.381 | INFO     | __main__:process_eml_file:151 - Processed Fw_ Re_Case No_4745232802125-Request for flight options.eml: 3 MIME parts, 0 attachments
+2025-06-11 15:01:58.381 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 15:01:58.381 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 15:01:58.381 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 15:01:58.381 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 15:01:58.381 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 15:01:58.381 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 15:01:58.382 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 15:01:58.382 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 15:01:58.383 | INFO     | __main__:main:219 - Total cases: 5
+2025-06-11 15:09:03.445 | INFO     | __main__:run:185 - Processing Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml
+2025-06-11 15:09:03.446 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_150903
+2025-06-11 15:09:03.453 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml: 3 parts, 0 attachments
+2025-06-11 15:09:03.453 | INFO     | src.email_audit.auditor.email_auditor:audit_email:190 - Directly parsing HTML file: eml-html/Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.html
+2025-06-11 15:09:03.465 | INFO     | src.email_audit.auditor.email_auditor:audit_email:202 - Structuring conversation from raw text using a LLM...
+2025-06-11 15:09:05.778 | INFO     | src.email_audit.auditor.email_auditor:audit_email:239 - Successfully structured 4 messages.
+2025-06-11 15:09:05.778 | INFO     | src.email_audit.auditor.email_auditor:audit_email:242 - Building comprehensive analysis prompt...
+2025-06-11 15:09:05.778 | INFO     | src.email_audit.auditor.email_auditor:audit_email:272 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 15:10:06.385 | INFO     | src.email_audit.auditor.email_auditor:audit_email:283 - Refining the audit with a judge LLM...
+2025-06-11 15:11:11.292 | INFO     | src.email_audit.auditor.email_auditor:audit_email:313 - Successfully refined the audit report.
+2025-06-11 15:11:11.299 | INFO     | __main__:process_eml_file:151 - Processed Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml: 3 MIME parts, 0 attachments
+2025-06-11 15:11:11.300 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 15:11:11.300 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 15:11:11.300 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 15:11:11.300 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 15:11:11.300 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 15:11:11.300 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 15:11:11.300 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 15:11:11.300 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 15:11:11.301 | INFO     | __main__:main:219 - Total cases: 1
+2025-06-11 15:20:03.430 | INFO     | __main__:run:185 - Processing Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml
+2025-06-11 15:20:03.431 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_152003
+2025-06-11 15:20:03.438 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml: 3 parts, 0 attachments
+2025-06-11 15:20:03.439 | INFO     | src.email_audit.auditor.email_auditor:audit_email:190 - Directly parsing HTML file: eml-html/Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.html
+2025-06-11 15:20:03.451 | INFO     | src.email_audit.auditor.email_auditor:audit_email:202 - Structuring conversation from raw text using a LLM...
+2025-06-11 15:20:05.957 | ERROR    | src.email_audit.auditor.email_auditor:audit_email:317 - Error during efficient HTML-based audit: 'EmailAuditor' object has no attribute 'prompt_manager'
+2025-06-11 15:20:05.957 | ERROR    | __main__:process_eml_file:173 - Error processing Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml: 'EmailAuditor' object has no attribute 'prompt_manager'
+2025-06-11 15:20:05.957 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 15:20:05.957 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 15:20:05.957 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 15:20:05.957 | INFO     | __main__:main:203 - - Failed: 1 files
+2025-06-11 15:20:05.958 | INFO     | __main__:main:219 - Total cases: 1
+2025-06-11 15:20:48.627 | INFO     | __main__:run:185 - Processing Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml
+2025-06-11 15:20:48.628 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_152048
+2025-06-11 15:20:48.634 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml: 3 parts, 0 attachments
+2025-06-11 15:20:48.634 | INFO     | src.email_audit.auditor.email_auditor:audit_email:190 - Directly parsing HTML file: eml-html/Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.html
+2025-06-11 15:20:48.646 | INFO     | src.email_audit.auditor.email_auditor:audit_email:202 - Structuring conversation from raw text using a LLM...
+2025-06-11 15:20:50.769 | INFO     | src.email_audit.auditor.email_auditor:audit_email:277 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 15:21:56.357 | INFO     | src.email_audit.auditor.email_auditor:audit_email:288 - Refining the audit with a judge LLM...
+2025-06-11 15:23:18.217 | INFO     | src.email_audit.auditor.email_auditor:audit_email:318 - Successfully refined the audit report.
+2025-06-11 15:23:18.225 | INFO     | __main__:process_eml_file:151 - Processed Re_ #A-CS-8602259_ Case 5617439_ Re_ Dubai to Mauritius flight booking.eml: 3 MIME parts, 0 attachments
+2025-06-11 15:23:18.225 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 15:23:18.225 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 15:23:18.225 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 15:23:18.225 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 15:23:18.226 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 15:23:18.226 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 15:23:18.226 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 15:23:18.226 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 15:23:18.227 | INFO     | __main__:main:219 - Total cases: 1
+2025-06-11 16:19:13.396 | INFO     | __main__:run:185 - Processing Re_ RE_ #A-CS-8615346_ Case 5630526_ Re_ Pakistan Trip for JK - 20th June .eml
+2025-06-11 16:19:13.397 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_161913
+2025-06-11 16:19:13.403 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed Re_ RE_ #A-CS-8615346_ Case 5630526_ Re_ Pakistan Trip for JK - 20th June .eml: 3 parts, 0 attachments
+2025-06-11 16:19:13.404 | INFO     | src.email_audit.auditor.email_auditor:audit_email:190 - Directly parsing HTML file: eml-html/Re_ RE_ #A-CS-8615346_ Case 5630526_ Re_ Pakistan Trip for JK - 20th June .html
+2025-06-11 16:19:13.420 | INFO     | src.email_audit.auditor.email_auditor:audit_email:202 - Structuring conversation from raw text using a LLM...
+2025-06-11 16:19:16.982 | INFO     | src.email_audit.auditor.email_auditor:audit_email:277 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 16:20:19.787 | INFO     | src.email_audit.auditor.email_auditor:audit_email:288 - Refining the audit with a judge LLM...
+2025-06-11 16:21:27.335 | INFO     | src.email_audit.auditor.email_auditor:audit_email:318 - Successfully refined the audit report.
+2025-06-11 16:21:27.347 | INFO     | __main__:process_eml_file:151 - Processed Re_ RE_ #A-CS-8615346_ Case 5630526_ Re_ Pakistan Trip for JK - 20th June .eml: 3 MIME parts, 0 attachments
+2025-06-11 16:21:27.347 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 16:21:27.347 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 16:21:27.347 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 16:21:27.347 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 16:21:27.348 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 16:21:27.348 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 16:21:27.348 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 16:21:27.348 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 16:21:27.349 | INFO     | __main__:main:219 - Total cases: 1

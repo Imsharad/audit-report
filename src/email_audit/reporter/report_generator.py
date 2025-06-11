@@ -1,4 +1,4 @@
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 from datetime import datetime
 import re
 from .csv_headers import AUDIT_CSV_HEADERS
@@ -25,7 +25,15 @@ class ReportGenerator:
                 break
         return mapping
 
-    def generate_csv_report(self, case_number: str, email_name: str, audit_results: Dict[str, Any], timestamp: str) -> List[List[Any]]:
+    def generate_csv_report(
+        self, 
+        case_number: str, 
+        email_name: str, 
+        audit_results: Dict[str, Any], 
+        timestamp: str,
+        attachment_manifest: Optional[Any] = None,
+        attachment_analysis: Optional[Any] = None
+    ) -> List[List[Any]]:
         rows: List[List[Any]] = [AUDIT_CSV_HEADERS]
         data_row: List[Any] = [""] * len(AUDIT_CSV_HEADERS)
 
@@ -127,7 +135,7 @@ class ReportGenerator:
                 )
                 data_row[header_to_index[csv_col_header]] = round(category_total, 2)
 
-        # FEEDBACK
+        # FEEDBACK - Enhanced with attachment findings
         feedback_items = []
         for step in detailed_steps_list:
             if isinstance(step, dict) and float(step.get('score', 1.0)) < 0.7:
@@ -136,6 +144,15 @@ class ReportGenerator:
                     # Sanitize the text to prevent breaking CSV format
                     sanitized_text = improvement_text.replace('"', "'").replace('\n', ' ').replace('\r', '')
                     feedback_items.append(f"{step.get('title', 'Unknown Step')}: {sanitized_text}")
+        
+        # Add attachment security concerns to feedback
+        if attachment_analysis:
+            for analysis in attachment_analysis.analyses:
+                if analysis.security_concerns:
+                    concerns_text = "; ".join(analysis.security_concerns)
+                    sanitized_concerns = concerns_text.replace('"', "'").replace('\n', ' ').replace('\r', '')
+                    feedback_items.append(f"Attachment {analysis.filename}: {sanitized_concerns}")
+        
         data_row[header_to_index["FEEDBACK"]] = "; ".join(feedback_items) if feedback_items else ""
 
         # Ensure all data row elements are appropriately typed (string or number)
@@ -151,26 +168,45 @@ class ReportGenerator:
         self,
         email_name: str,
         audit_results: Dict[str, Any],
-        timestamp: str
+        timestamp: str,
+        attachment_manifest: Optional[Any] = None,
+        attachment_analysis: Optional[Any] = None
     ) -> Dict[str, Any]:
         """
-        Generate an audit report for an email. (Existing method)
-        ... (rest of the original method remains unchanged)
+        Generate an audit report for an email with attachment data.
         """
         # Get score from browser audit
-        # This 'score' might be the old overall score. The CSV uses detailed_results.
-        # For consistency, this method might also need to be updated if 'audit_results' structure changed fundamentally.
-        # However, the subtask is focused on generate_csv_report.
-        score = audit_results.get("score", audit_results.get("overall_score", 0)) # Try to get score safely
+        score = audit_results.get("score", audit_results.get("overall_score", 0))
         
-        # Generate report
+        # Generate base report
         report = {
             "email_name": email_name,
             "timestamp": timestamp,
             "overall_score": round(float(score), 2) if isinstance(score, (int, float, str)) and str(score).replace('.', '', 1).isdigit() else 0.0,
-            "audit_results": audit_results, # This now contains detailed_results
+            "audit_results": audit_results,
             "summary": self._generate_summary(audit_results)
         }
+        
+        # Add attachment data if available
+        if attachment_manifest:
+            report["attachment_manifest"] = {
+                "total_parts": attachment_manifest.total_parts,
+                "attachment_count": attachment_manifest.attachment_count,
+                "approved_attachments": len(attachment_manifest.approved_attachments),
+                "flagged_attachments": len(attachment_manifest.flagged_attachments),
+                "processing_summary": attachment_manifest.processing_summary
+            }
+        
+        if attachment_analysis:
+            report["attachment_analysis"] = {
+                "total_attachments": attachment_analysis.total_attachments,
+                "processed_attachments": attachment_analysis.processed_attachments,
+                "skipped_attachments": attachment_analysis.skipped_attachments,
+                "total_processing_time_ms": attachment_analysis.total_processing_time_ms,
+                "summary": attachment_analysis.summary,
+                "security_concerns_found": sum(len(a.security_concerns) for a in attachment_analysis.analyses),
+                "high_confidence_findings": len([a for a in attachment_analysis.analyses if a.confidence_score > 0.7])
+            }
         
         return report
     

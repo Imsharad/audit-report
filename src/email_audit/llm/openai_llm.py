@@ -1,11 +1,11 @@
 import json
 import os
 import re # Added import re
-from typing import Optional, Type, Any, Dict, Union
+from typing import Optional, Type, Any, Dict, Union, List
 from pydantic import BaseModel, ValidationError
 from openai import AsyncOpenAI # Use AsyncOpenAI for asynchronous operations
 
-from .base_llm import BaseLLM
+from .base_llm import BaseLLM, MultimodalPrompt
 from loguru import logger
 
 class OpenAILLM(BaseLLM):
@@ -108,3 +108,24 @@ class OpenAILLM(BaseLLM):
             logger.error(f"Error invoking OpenAI model {self.model_name}: {e}")
             # Consider re-raising, or returning a specific error object
             return None
+
+    @property
+    def supports_multimodal(self) -> bool:
+        """OpenAI GPT-4 Vision supports multimodal inputs."""
+        return "vision" in self.model_name.lower() or "gpt-4" in self.model_name.lower()
+
+    @property
+    def supported_image_types(self) -> List[str]:
+        """Supported image types for OpenAI."""
+        return ["image/jpeg", "image/png", "image/gif", "image/webp"]
+
+    @property
+    def supported_document_types(self) -> List[str]:
+        """OpenAI doesn't directly support document types yet."""
+        return []
+
+    async def ainvoke_multimodal(self, prompt: MultimodalPrompt, schema: Optional[Type[BaseModel]] = None) -> Optional[Union[BaseModel, str]]:
+        """Multimodal support for OpenAI - placeholder implementation."""
+        logger.warning("Multimodal support not fully implemented for OpenAI LLM yet")
+        # For now, fall back to text-only processing
+        return await self.ainvoke(prompt.text, schema)
