@@ -45,6 +45,7 @@ class AuditReport(BaseModel):
 
 class RefinedAuditReport(BaseModel):
     """The refined and corrected full audit report, reviewed by a judge model."""
+    chain_of_thought: List[str] = Field(..., description="A step-by-step reasoning of the judge model's decisions.")
     results: List[StepResult] = Field(..., description="A list of the corrected results for each audit step performed.")
 
 class EmailAuditor:
@@ -230,7 +231,7 @@ class EmailAuditor:
         
             logger.debug(f"Structured conversation extracted: {structured_data.model_dump_json(indent=2)}")
 
-            # Step 2: Perform the detailed audit using the structured data
+            # Step 3: Perform the detailed audit using the structured data
             messages = {
                 "messages": [
                     {
@@ -276,205 +277,59 @@ You must call the `structured_output` function with the results of your analysis
 
             logger.info("Performing comprehensive audit with a single, structured LLM call...")
             # comprehensive_report = await structured_llm.ainvoke(analysis_task_prompt) # Old way
-            comprehensive_report = await self.reasoning_llm.ainvoke(audit_prompt, schema=AuditReport)
-            if not isinstance(comprehensive_report, AuditReport):
-                logger.error(f"Failed to get structured AuditReport. Received type: {type(comprehensive_report)}. Content: {comprehensive_report}")
-                # Or, if LLM client returns raw string on parsing error:
-                # if isinstance(comprehensive_report, str):
-                #    logger.error(f"Failed to parse AuditReport. Raw response: {comprehensive_report}")
-                raise ValueError("Could not parse audit report structure from reasoning_llm.")
-            
-            # Step 3b: Refine the audit with a "judge" LLM
-            logger.info("Refining the audit with a judge LLM...")
-            
-            initial_report_json = json.dumps([result.model_dump() for result in comprehensive_report.results], indent=2)
+            initial_audit_report = await self.reasoning_llm.ainvoke(audit_prompt, schema=AuditReport)
+            logger.debug(f"Initial audit report generated: {initial_audit_report.model_dump_json(indent=2)}")
 
-            judging_prompt = f"""
-You are an expert quality assurance auditor. Your task is to review an email conversation and an initial automated audit report.
-Your goal is to identify inaccuracies, missed details, or misinterpretations in the first report and produce a more accurate, refined version.
+            # Step 4: Refine the audit with a "judge" model
+            logger.info("Refining the audit with a judge model...")
+            refinement_prompt = f"""
+You are the Chief Auditor. Your role is to review an initial audit of an email conversation and provide a corrected, final judgment. The initial auditor may have made mistakes, been too lenient, or too harsh.
 
-**Original Email Content:**
----
-{email_text_content[:20000]}
----
+Your task is to review the original conversation and the initial audit report. Then, generate a refined and corrected version of the report.
 
-**Initial Audit Report (JSON):**
----
-{initial_report_json}
----
+**First, provide a step-by-step chain of thought.** For each audit point, explain your reasoning for either agreeing with or changing the initial assessment. Be specific.
 
-**Your Task:**
-Carefully compare the initial audit report against the original email content. Pay close attention to context. For example, if the initial report penalizes the agent for not offering a service that was clearly not applicable, you must correct it. Conversely, if the report misses a clear failure by the agent, you must identify and score it correctly.
+**After your chain of thought, provide the final, corrected audit** as a JSON object conforming to the `RefinedAuditReport` schema.
 
-Provide a refined, corrected version of the full audit report. Ensure your output is a JSON object that conforms to the required schema, containing the complete list of corrected audit steps.
+Original Conversation:
+```json
+{json.dumps(messages, indent=2)}
+```
+
+Initial Audit Report to Review:
+```json
+{initial_audit_report.model_dump_json(indent=2)}
+```
+
+Begin your response with your chain of thought, and then provide the final JSON object.
 """
             
-            refined_report = await self.judge_llm.ainvoke(judging_prompt, schema=RefinedAuditReport)
-            if not isinstance(refined_report, RefinedAuditReport):
-                logger.warning(f"Failed to get structured RefinedAuditReport. Falling back to the original report. Received type: {type(refined_report)}")
-                # Fallback to the original report if judge fails
-                final_comprehensive_report = comprehensive_report
-            else:
-                logger.info("Successfully refined the audit report.")
-                # The judge's output is a list of StepResult, so we create an AuditReport instance from it
-                final_comprehensive_report = AuditReport(results=refined_report.results)
+            refined_audit_report = await self.judge_llm.ainvoke(refinement_prompt, schema=RefinedAuditReport)
+            logger.debug(f"Refined audit report generated: {refined_audit_report.model_dump_json(indent=2)}")
 
             step_metadata = {step['id']: step for step in self.audit_steps}
-            audit_results = []
-            
-            for result_pydantic in final_comprehensive_report.results:
+            final_audit_results = []
+            for result_pydantic in refined_audit_report.results:
                 result_dict = result_pydantic.model_dump()
                 metadata = step_metadata.get(result_dict['step_id'])
-                
                 if metadata:
-                    result_dict['is_critical'] = metadata['isCritical']
-                    result_dict['category'] = metadata['category']
-                    result_dict['max_score'] = 1.0
-                    audit_results.append(result_dict)
+                    result_dict['is_critical'] = metadata.get('isCritical', False)
+                    result_dict['category'] = metadata.get('category', 'Uncategorized')
+                    result_dict['max_score'] = metadata.get('max_score', 1.0) # Assuming max_score is in config
+                final_audit_results.append(result_dict)
 
-            # Step 4: Calculate scores and prepare final report
-            total_score = sum(res['score'] * res['max_score'] for res in audit_results)
-            max_score = len(self.audit_steps)
-            overall_score = total_score / max_score if max_score > 0 else 0
+            # Return the final, judge-refined results
+            overall_score = sum(r['score'] * r['max_score'] for r in final_audit_results) / sum(r['max_score'] for r in final_audit_results) if final_audit_results else 0
             
             return {
-                "context": self._extract_context(audit_results),
-                "participants": self._extract_participants(messages['messages']),
-                "tone": self._analyze_tone(audit_results),
-                "security": self._check_security(audit_results),
-                "effectiveness": self._assess_effectiveness(audit_results),
-                "recommendations": self._generate_recommendations(audit_results),
                 "score": overall_score,
-                "detailed_results": audit_results,
-                "reasoning": self._generate_reasoning(audit_results)
+                "detailed_results": final_audit_results,
+                "chain_of_thought": refined_audit_report.chain_of_thought,
+                "conversation_history": [msg.model_dump() for msg in structured_data.email_conversations],
+                "initial_audit_report": initial_audit_report.model_dump() # For comparison
             }
-            
+
         except Exception as e:
-            logger.error(f"Error during efficient HTML-based audit: {str(e)}")
-            raise
-    
-    def _extract_context_for_step(self, messages: List[Dict[str, Any]], step: Dict[str, Any]) -> Dict[str, Any]:
-        """Extract relevant context for a specific audit step."""
-        context = {
-            "relevant_messages": [],
-            "key_events": [],
-            "participants": set()
-        }
-        
-        for message in messages:
-            # Add message if it's relevant to the step
-            if self._is_message_relevant(message, step):
-                context["relevant_messages"].append(message)
-                context["participants"].add(message["sender"])
-                if message["recipients"]:
-                    context["participants"].update(message["recipients"])
-                
-                # Extract key events
-                if self._is_key_event(message, step):
-                    context["key_events"].append({
-                        "timestamp": message["timestamp"],
-                        "type": self._get_event_type(message, step),
-                        "description": message["content"][:100] + "..."
-                    })
-        
-        return context
-    
-    def _is_message_relevant(self, message: Dict[str, Any], step: Dict[str, Any]) -> bool:
-        """Determine if a message is relevant to a specific audit step."""
-        # Add logic to determine relevance based on step type
-        if step["category"] == "PNR":
-            return any(keyword in message["content"].lower() for keyword in ["itinerary", "flight", "booking", "reservation"])
-        elif step["category"] == "communication":
-            return True  # All messages are relevant for communication analysis
-        elif step["category"] == "policy and service":
-            return any(keyword in message["content"].lower() for keyword in ["policy", "service", "requirement", "visa"])
-        return False
-    
-    def _is_key_event(self, message: Dict[str, Any], step: Dict[str, Any]) -> bool:
-        """Determine if a message represents a key event for the audit step."""
-        # Add logic to identify key events based on step type
-        if step["id"] == "limo_offering":
-            return "limo" in message["content"].lower() or "car service" in message["content"].lower()
-        elif step["id"] == "transit_visa_advisory":
-            return "visa" in message["content"].lower() or "transit" in message["content"].lower()
-        return False
-    
-    def _get_event_type(self, message: Dict[str, Any], step: Dict[str, Any]) -> str:
-        """Get the type of event for a message."""
-        # Add logic to categorize events based on step type
-        if step["id"] == "limo_offering":
-            return "limo_service_mentioned"
-        elif step["id"] == "transit_visa_advisory":
-            return "visa_requirement_discussed"
-        return "general_message"
-    
-    def _generate_reasoning(self, audit_results: List[Dict[str, Any]]) -> str:
-        """Generate comprehensive reasoning for the audit results."""
-        reasoning_parts = []
-        
-        # Group results by category
-        category_results = {}
-        for result in audit_results:
-            category = result["category"]
-            if category not in category_results:
-                category_results[category] = []
-            category_results[category].append(result)
-        
-        # Generate reasoning for each category
-        for category, results in category_results.items():
-            reasoning_parts.append(f"\n{category.upper()} Analysis:")
-            for result in results:
-                reasoning_parts.append(f"\n{result['title']}:")
-                reasoning_parts.append(f"Score: {result['score']}")
-                reasoning_parts.append(f"Analysis: {result['analysis']}")
-                if not result["passed"]:
-                    reasoning_parts.append(f"Areas for Improvement: {result.get('improvements', 'None specified')}")
-        
-        return "\n".join(reasoning_parts)
-    
-    def _extract_context(self, audit_results: List[Dict[str, Any]]) -> str:
-        """Extract context from audit results."""
-        context_parts = []
-        for result in audit_results:
-            if result["category"] == "PNR":
-                context_parts.append(f"{result['title']}: {result['analysis']}")
-        return " | ".join(context_parts) if context_parts else "No specific context found"
-    
-    def _extract_participants(self, messages: List[Dict[str, Any]]) -> str:
-        """Extract participants from email thread."""
-        # This is a simple implementation - you might want to enhance it
-        return "Participants extracted from email thread"
-    
-    def _analyze_tone(self, audit_results: List[Dict[str, Any]]) -> str:
-        """Analyze the tone from audit results."""
-        tone_parts = []
-        for result in audit_results:
-            if result["category"] == "communication":
-                tone_parts.append(f"{result['title']}: {result['analysis']}")
-        return " | ".join(tone_parts) if tone_parts else "No tone analysis available"
-    
-    def _check_security(self, audit_results: List[Dict[str, Any]]) -> str:
-        """Check security aspects from audit results."""
-        security_parts = []
-        for result in audit_results:
-            if "sensitive" in result["analysis"].lower() or "security" in result["analysis"].lower():
-                security_parts.append(f"{result['title']}: {result['analysis']}")
-        return " | ".join(security_parts) if security_parts else "No security concerns found"
-    
-    def _assess_effectiveness(self, audit_results: List[Dict[str, Any]]) -> str:
-        """Assess communication effectiveness from audit results."""
-        effectiveness_parts = []
-        for result in audit_results:
-            if result["category"] in ["communication", "policy and service"]:
-                effectiveness_parts.append(f"{result['title']}: {result['analysis']}")
-        return " | ".join(effectiveness_parts) if effectiveness_parts else "No effectiveness assessment available"
-    
-    def _generate_recommendations(self, audit_results: List[Dict[str, Any]]) -> str:
-        """Generate recommendations based on audit results."""
-        recommendations = []
-        for result in audit_results:
-            if not result["passed"] and result["is_critical"]:
-                recommendations.append(f"Critical: {result['title']} - {result['analysis']}")
-            elif not result["passed"]:
-                recommendations.append(f"Improvement: {result['title']} - {result['analysis']}")
-        return " | ".join(recommendations) if recommendations else "No specific recommendations" 
+            logger.error(f"An unexpected error occurred during the audit process: {e}")
+            # Consider more specific error handling or re-raising
+            raise 

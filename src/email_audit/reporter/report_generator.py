@@ -212,32 +212,24 @@ class ReportGenerator:
     
     def _generate_summary(self, audit_results: Dict[str, Any]) -> str:
         """Generate a human-readable summary of the audit results."""
-        summary_parts = []
+        summary_parts = ["Email Analysis Summary:"]
         
-        # Add audit summary (This might need updates based on new audit_results structure)
-        summary_parts.append("Email Analysis Summary:")
-        # Example: Use a high-level summary if available, or fallback
-        summary_parts.append(f"1. Context: {audit_results.get('context', 'N/A')}")
-        summary_parts.append(f"2. Participants: {audit_results.get('participants', 'N/A')}")
-        summary_parts.append(f"3. Tone: {audit_results.get('tone', 'N/A')}")
-        summary_parts.append(f"4. Security: {audit_results.get('security', 'N/A')}") # Assuming these keys might still exist
-        summary_parts.append(f"5. Communication: {audit_results.get('effectiveness', 'N/A')}")
-
-        # Recommendations from detailed_results for CSV could be used here too
+        # Recommendations from detailed_results
         feedback_items_summary = []
         detailed_steps_list_summary = audit_results.get('detailed_results', [])
         for step in detailed_steps_list_summary:
-            if isinstance(step, dict) and float(step.get('score', 1.0)) < 0.7:
-                improvement_text = step.get('improvements') or step.get('analysis')
+            # Check if the score is below the passing threshold (e.g., 0.7 or just < 1.0 for any feedback)
+            if isinstance(step, dict) and float(step.get('score', 1.0)) < 1.0:
+                improvement_text = step.get('improvements')
+                # Only add if there's a specific improvement suggestion
                 if improvement_text:
-                     feedback_items_summary.append(f"{step.get('title', 'Issue')}: {improvement_text}")
+                     feedback_items_summary.append(f"- {step.get('title', 'Issue')}: {improvement_text}")
 
         if feedback_items_summary:
-            summary_parts.append("6. Key Recommendations:\n  - " + "\n  - ".join(feedback_items_summary))
-        elif audit_results.get('recommendations'): # Fallback to old recommendations
-             summary_parts.append(f"6. Recommendations: {audit_results['recommendations']}")
+            summary_parts.append("Key Recommendations:")
+            summary_parts.extend(feedback_items_summary)
         else:
-            summary_parts.append("6. Recommendations: No specific recommendations.")
+            summary_parts.append("Key Recommendations: No specific improvement suggestions were generated.")
 
         return "\n".join(summary_parts)
 

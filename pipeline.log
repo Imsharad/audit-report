@@ -1733,3 +1733,51 @@
 2025-06-11 16:21:27.348 | INFO     | __main__:main:214 - - Approved for analysis: 0
 2025-06-11 16:21:27.348 | INFO     | __main__:main:215 - - Flagged: 0
 2025-06-11 16:21:27.349 | INFO     | __main__:main:219 - Total cases: 1
+2025-06-11 18:21:41.732 | INFO     | __main__:run:185 - Processing AI Project Annual Leave Ticket.eml
+2025-06-11 18:21:41.733 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_182141
+2025-06-11 18:21:41.743 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed AI Project Annual Leave Ticket.eml: 3 parts, 0 attachments
+2025-06-11 18:21:41.744 | INFO     | src.email_audit.auditor.email_auditor:audit_email:191 - Directly parsing HTML file: eml-html/AI Project Annual Leave Ticket.html
+2025-06-11 18:21:41.757 | INFO     | src.email_audit.auditor.email_auditor:audit_email:203 - Structuring conversation from raw text using a LLM...
+2025-06-11 18:21:47.695 | INFO     | src.email_audit.auditor.email_auditor:audit_email:278 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 18:22:51.231 | INFO     | src.email_audit.auditor.email_auditor:audit_email:284 - Refining the audit with a judge model...
+2025-06-11 18:24:31.610 | INFO     | __main__:process_eml_file:151 - Processed AI Project Annual Leave Ticket.eml: 3 MIME parts, 0 attachments
+2025-06-11 18:24:31.610 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 18:24:31.610 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 18:24:31.610 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 18:24:31.610 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 18:24:31.610 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 18:24:31.611 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 18:24:31.611 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 18:24:31.611 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 18:24:31.612 | INFO     | __main__:main:219 - Total cases: 1
+2025-06-11 18:55:22.737 | INFO     | __main__:run:185 - Processing AI Project Annual Leave Ticket.eml
+2025-06-11 18:55:22.738 | INFO     | __main__:process_eml_file:57 - File AI Project Annual Leave Ticket.eml already processed in case CASE_20250611_182141
+2025-06-11 18:55:22.738 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 18:55:22.738 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 18:55:22.738 | INFO     | __main__:main:202 - - Skipped: 1 files
+2025-06-11 18:55:22.738 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 18:55:22.739 | INFO     | __main__:main:219 - Total cases: 1
+2025-06-11 18:55:36.564 | INFO     | __main__:run:185 - Processing AI Project Annual Leave Ticket.eml
+2025-06-11 18:55:36.564 | INFO     | __main__:process_eml_file:57 - File AI Project Annual Leave Ticket.eml already processed in case CASE_20250611_182141
+2025-06-11 18:55:36.565 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 18:55:36.565 | INFO     | __main__:main:201 - - Processed: 0 files
+2025-06-11 18:55:36.565 | INFO     | __main__:main:202 - - Skipped: 1 files
+2025-06-11 18:55:36.565 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 18:55:36.565 | INFO     | __main__:main:219 - Total cases: 0
+2025-06-11 18:55:54.995 | INFO     | __main__:run:185 - Processing AI Project Annual Leave Ticket.eml
+2025-06-11 18:55:54.996 | INFO     | __main__:process_eml_file:68 - Created new case folder: CASE_20250611_185554
+2025-06-11 18:55:55.003 | INFO     | src.email_audit.parser.eml_parser:parse_with_attachments:94 - Parsed AI Project Annual Leave Ticket.eml: 3 parts, 0 attachments
+2025-06-11 18:55:55.003 | INFO     | src.email_audit.auditor.email_auditor:audit_email:191 - Directly parsing HTML file: eml-html/AI Project Annual Leave Ticket.html
+2025-06-11 18:55:55.014 | INFO     | src.email_audit.auditor.email_auditor:audit_email:203 - Structuring conversation from raw text using a LLM...
+2025-06-11 18:56:00.392 | INFO     | src.email_audit.auditor.email_auditor:audit_email:278 - Performing comprehensive audit with a single, structured LLM call...
+2025-06-11 18:57:00.702 | INFO     | src.email_audit.auditor.email_auditor:audit_email:284 - Refining the audit with a judge model...
+2025-06-11 18:58:41.941 | INFO     | __main__:process_eml_file:151 - Processed AI Project Annual Leave Ticket.eml: 3 MIME parts, 0 attachments
+2025-06-11 18:58:41.941 | INFO     | __main__:main:200 - Pipeline completed:
+2025-06-11 18:58:41.942 | INFO     | __main__:main:201 - - Processed: 1 files
+2025-06-11 18:58:41.942 | INFO     | __main__:main:202 - - Skipped: 0 files
+2025-06-11 18:58:41.942 | INFO     | __main__:main:203 - - Failed: 0 files
+2025-06-11 18:58:41.942 | INFO     | __main__:main:212 - Attachment processing:
+2025-06-11 18:58:41.942 | INFO     | __main__:main:213 - - Total attachments: 0
+2025-06-11 18:58:41.942 | INFO     | __main__:main:214 - - Approved for analysis: 0
+2025-06-11 18:58:41.942 | INFO     | __main__:main:215 - - Flagged: 0
+2025-06-11 18:58:41.943 | INFO     | __main__:main:219 - Total cases: 1
